@@ -28,7 +28,6 @@ Once installed, the skill is automatically available in Claude Code. Trigger it 
 - "フローチャートを作って"
 - "業務フローを作成して"
 - "swimlane図を作って"
-- "draw.ioで図を作って"
 - ".drawioファイルを作成して"
 
 ## What it does

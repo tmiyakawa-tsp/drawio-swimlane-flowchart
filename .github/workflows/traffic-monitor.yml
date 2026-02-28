@@ -1,0 +1,96 @@
+name: Traffic Monitor
+
+on:
+  schedule:
+    # 毎朝9:00 JST (0:00 UTC) に実行
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 手動実行も可能
+
+jobs:
+  check-traffic:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Check repository traffic
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: views } = await github.rest.repos.getViews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              per: 'day'
+            });
+
+            const { data: clones } = await github.rest.repos.getClones({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              per: 'day'
+            });
+
+            const { data: referrers } = await github.rest.repos.getTopReferralSources({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+
+            const totalViews = views.count;
+            const uniqueVisitors = views.uniques;
+            const totalClones = clones.count;
+            const uniqueCloners = clones.uniques;
+
+            // アクセスがない場合は何もしない
+            if (totalViews === 0 && totalClones === 0) {
+              console.log('No traffic detected. Skipping notification.');
+              return;
+            }
+
+            // 直近のアクセスがある日のみ抽出
+            const recentViews = views.views
+              .filter(v => v.count > 0)
+              .map(v => `| ${v.timestamp.split('T')[0]} | ${v.count} | ${v.uniques} |`)
+              .join('\n');
+
+            const recentClones = clones.clones
+              .filter(c => c.count > 0)
+              .map(c => `| ${c.timestamp.split('T')[0]} | ${c.count} | ${c.uniques} |`)
+              .join('\n');
+
+            const referrerList = referrers.length > 0
+              ? referrers.map(r => `| ${r.referrer} | ${r.count} | ${r.uniques} |`).join('\n')
+              : '| (なし) | - | - |';
+
+            const today = new Date().toISOString().split('T')[0];
+
+            const body = `## Traffic Report (${today})
+
+            ### Summary (過去14日間)
+            | 指標 | 合計 | ユニーク |
+            |------|------|---------|
+            | 閲覧数 | ${totalViews} | ${uniqueVisitors} |
+            | クローン数 | ${totalClones} | ${uniqueCloners} |
+
+            ### Views (日別)
+            | 日付 | 閲覧数 | ユニーク |
+            |------|--------|---------|
+            ${recentViews || '| (なし) | - | - |'}
+
+            ### Clones (日別)
+            | 日付 | クローン数 | ユニーク |
+            |------|-----------|---------|
+            ${recentClones || '| (なし) | - | - |'}
+
+            ### Referring Sites
+            | サイト | 閲覧数 | ユニーク |
+            |--------|--------|---------|
+            ${referrerList}
+            `.replace(/^            /gm, '');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[Traffic] ${today}: ${totalViews} views, ${totalClones} clones`,
+              body: body,
+              labels: ['traffic-report']
+            });
+
+            console.log(`Notification created: ${totalViews} views, ${totalClones} clones`);

@@ -1,0 +1,236 @@
+<mxfile host="65bd71144e">
+    <diagram name="ページ1" id="ccuKM5feCdU5HsTSmqlq">
+        <mxGraphModel dx="2009" dy="1416" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1800" pageHeight="2339" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="lane_cust" value="顧客" style="swimlane;startSize=40;html=1;collapsible=1;whiteSpace=wrap;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="360" height="1600" as="geometry"/>
+                </mxCell>
+                <mxCell id="start" value="修理依頼 / 物品送付" style="ellipse;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;fontSize=12;" parent="lane_cust" vertex="1">
+                    <mxGeometry x="60" y="60" width="240" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="dec_prequote_cust" value="顧客判断&#xa;(先見積)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="lane_cust">
+                    <mxGeometry x="60" y="400" width="240" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_return_dispose" value="返却 / 廃棄" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="lane_cust">
+                    <mxGeometry x="60" y="571" width="240" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="end_return" value="完了" style="ellipse;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="lane_cust">
+                    <mxGeometry x="60" y="671" width="240" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="dec_cust_reply" value="顧客回答" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="lane_cust" vertex="1">
+                    <mxGeometry x="60" y="960" width="240" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_sales_office" value="営業所" style="swimlane;startSize=40;html=1;collapsible=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="400" y="40" width="240" height="1600" as="geometry">
+                        <mxRectangle x="400" y="40" width="71" height="40" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="proc_sales_input" value="受注入力 (区分：修理)&#xa;※システム連携" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;" parent="lane_sales_office" vertex="1">
+                    <mxGeometry x="40" y="140" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="先見積の間は、何もせずに保管しておく。" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;size=14;" vertex="1" parent="lane_sales_office">
+                    <mxGeometry x="105" y="406" width="141" height="68" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="修理しないとなった場合は、元の状態で返却。もしくは、廃棄手数料をいただく。" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;size=14;" vertex="1" parent="lane_sales_office">
+                    <mxGeometry x="-49" y="582" width="161" height="83" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_mfg" value="製造 (修理・診断)" style="swimlane;startSize=40;html=1;collapsible=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="40" width="400" height="1600" as="geometry">
+                        <mxRectangle x="640" y="40" width="130" height="40" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="proc_mfg_receive" value="現品受入&#xa;ステータス：修理中" style="rounded=1;whiteSpace=wrap;html=1;" parent="lane_mfg" vertex="1">
+                    <mxGeometry x="120" y="220" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="dec_mfg_action" value="処置判断" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="lane_mfg" vertex="1">
+                    <mxGeometry x="140" y="320" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_mfg_repair" value="修理実施・部品交換入力&#xa;検査実施" style="rounded=1;whiteSpace=wrap;html=1;" parent="lane_mfg" vertex="1">
+                    <mxGeometry x="120" y="481" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_mfg_prequote" value="診断のみ実施&#xa;(先見積・保留)" style="rounded=1;whiteSpace=wrap;html=1;" parent="lane_mfg" vertex="1">
+                    <mxGeometry x="20" y="420" width="140" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_mfg_complete" value="修理完了登録&#xa;倉庫移動 (パレット指定)" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=0" parent="lane_mfg" vertex="1">
+                    <mxGeometry x="120" y="600" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="高額でない場合は、先に修理をしてしまってからかかった分をお見積りとして提出する。" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;size=14;" vertex="1" parent="lane_mfg">
+                    <mxGeometry x="229" y="393" width="165" height="77" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_proc" value="資材 (部品)" style="swimlane;startSize=40;html=1;collapsible=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="1040" y="40" width="260" height="1600" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_proc_check" value="部品マスタ確認&#xa;(未登録品の処理)" style="rounded=1;whiteSpace=wrap;html=1;" parent="lane_proc" vertex="1">
+                    <mxGeometry x="50" y="680" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="dec_proc_approve" value="内容確定" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=default;fontStyle=0;fontSize=14;" parent="lane_proc" vertex="1">
+                    <mxGeometry x="70" y="780" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_admin" value="営業業務 (見積・出荷)" style="swimlane;startSize=40;html=1;collapsible=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="1300" y="40" width="260" height="1600" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_admin_quote" value="見積書作成・発行" style="rounded=1;whiteSpace=wrap;html=1;" parent="lane_admin" vertex="1">
+                    <mxGeometry x="50" y="862" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_admin_wait" value="見積提示・回答待ち&#xa;(見積中)" style="rounded=1;whiteSpace=wrap;html=1;" parent="lane_admin" vertex="1">
+                    <mxGeometry x="50" y="962" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_admin_rerepair" value="再修理・追加修理指示&lt;br&gt;(SpeedyNeo通知)" style="rounded=1;whiteSpace=wrap;html=1;" parent="lane_admin" vertex="1">
+                    <mxGeometry x="-79" y="1200" width="151" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_admin_ship_inst" value="出荷指示&#xa;(未出荷データ蓄積)" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=0" parent="lane_admin" vertex="1">
+                    <mxGeometry x="50" y="1300" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_system_sales" value="本日出荷処理&#xa;売上計上 (自動連携)" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="lane_admin" vertex="1">
+                    <mxGeometry x="50" y="1420" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="end" value="完了" style="ellipse;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="lane_admin" vertex="1">
+                    <mxGeometry x="90" y="1520" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_ext_ship" value="仕入先へ送付" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;" parent="lane_admin" vertex="1">
+                    <mxGeometry x="77" y="486" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_ext" value="仕入先 / 外部" style="swimlane;startSize=40;html=1;collapsible=1;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1560" y="40" width="240" height="1600" as="geometry"/>
+                </mxCell>
+                <mxCell id="proc_supplier_repair" value="仕入先修理/見積" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="lane_ext" vertex="1">
+                    <mxGeometry x="40" y="479" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="修理完了したら、通常の流れで「本日出荷処理」を行う。" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;size=14;" vertex="1" parent="lane_ext">
+                    <mxGeometry x="-37" y="1407" width="161" height="83" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" parent="1" source="start" target="proc_sales_input" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0.5;entryY=0;" parent="1" source="proc_sales_input" target="proc_mfg_receive" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="proc_mfg_receive" target="dec_mfg_action" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_4" value="即修理&lt;div&gt;（少額）&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=12;" parent="1" source="dec_mfg_action" target="proc_mfg_repair" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_5" value="先見積&lt;div&gt;（高額）&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;entryX=0.5;entryY=0;fontSize=12;" parent="1" source="dec_mfg_action" target="proc_mfg_prequote" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;dashed=1;exitDx=0;exitDy=0;" parent="1" source="proc_ext_ship" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1583" y="551"/>
+                        </Array>
+                        <mxPoint x="1599" y="551" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=1;entryY=0.75;exitDx=0;exitDy=0;" parent="1" source="proc_supplier_repair" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1680" y="671"/>
+                        </Array>
+                        <mxPoint x="1680" y="565" as="sourcePoint"/>
+                        <mxPoint x="920" y="671" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_pq1" value="見積提示" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0;entryY=0.5;fontSize=12;" edge="1" parent="1" source="proc_mfg_prequote" target="dec_prequote_cust">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="730" y="550"/>
+                            <mxPoint x="70" y="550"/>
+                            <mxPoint x="70" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_pq2" value="修理する" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.25;fontSize=12;" edge="1" parent="1" source="dec_prequote_cust" target="proc_mfg_repair">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="420" y="480"/>
+                            <mxPoint x="420" y="535"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_pq3" value="修理しない" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontSize=12;" edge="1" parent="1" source="dec_prequote_cust" target="proc_return_dispose">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_pq4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="proc_return_dispose" target="end_return">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="proc_mfg_repair" target="proc_mfg_complete" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0;entryY=0.5;" parent="1" source="proc_mfg_complete" target="proc_proc_check" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="840" y="750"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="proc_proc_check" target="dec_proc_approve" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_13" value="OK" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;strokeWidth=1;fillColor=#d5e8d4;strokeColor=#000000;fontColor=#000000;" parent="1" source="dec_proc_approve" target="proc_admin_quote" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1170" y="933"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_14" value="差戻し" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;dashed=1;fontColor=#000000;strokeColor=#000000;fontSize=12;" parent="1" source="dec_proc_approve" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="660" y="860"/>
+                            <mxPoint x="660" y="566"/>
+                            <mxPoint x="760" y="566"/>
+                        </Array>
+                        <mxPoint x="760" y="566" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="proc_admin_quote" target="proc_admin_wait" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.35;fontSize=12;" parent="1" source="proc_admin_wait" target="dec_cust_reply" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="見積書送付" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge_16">
+                    <mxGeometry x="-0.043" y="4" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_17" value="発注/出荷可" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0;entryY=0.5;fontSize=12;" parent="1" source="dec_cust_reply" target="proc_admin_ship_inst" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="220" y="1370"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_18" value="再修理・追加修理希望" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;entryX=0;entryY=0.5;fontSize=12;" parent="1" source="dec_cust_reply" target="proc_admin_rerepair" edge="1">
+                    <mxGeometry x="0.0002" relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="440" y="1053"/>
+                            <mxPoint x="440" y="1265"/>
+                        </Array>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=1;entryY=0.5;dashed=1;" parent="1" source="proc_admin_rerepair" target="proc_mfg_receive" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1780" y="1265"/>
+                            <mxPoint x="1780" y="290"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge_20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="proc_admin_ship_inst" target="proc_system_sales" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="proc_system_sales" target="end" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_6" value="仕入先へ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;fontSize=12;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" parent="1" source="proc_mfg_repair" target="proc_ext_ship" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

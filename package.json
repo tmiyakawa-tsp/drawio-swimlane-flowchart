@@ -1,0 +1,30 @@
+{
+  "name": "drawio-swimlane-flowchart",
+  "version": "1.0.0",
+  "description": "Claude Code skill: draw.io swimlane flowchart generator for business process diagrams",
+  "bin": {
+    "drawio-swimlane-flowchart": "./bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "skill/"
+  ],
+  "keywords": [
+    "claude-code",
+    "skill",
+    "drawio",
+    "swimlane",
+    "flowchart",
+    "business-process"
+  ],
+  "author": "Tsutomu Miyakawa",
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

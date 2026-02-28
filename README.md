@@ -8,17 +8,17 @@ Claude Code skill for generating draw.io swimlane (cross-functional) business pr
 
 ```bash
 # User-level (all projects)
-npx github:YOUR_USERNAME/drawio-swimlane-flowchart --global
+npx github:tmiyakawa-tsp/drawio-swimlane-flowchart --global
 
 # Project-level (current project only)
-npx github:YOUR_USERNAME/drawio-swimlane-flowchart --project
+npx github:tmiyakawa-tsp/drawio-swimlane-flowchart --project
 ```
 
 ### Uninstall
 
 ```bash
-npx github:YOUR_USERNAME/drawio-swimlane-flowchart --uninstall --global
-npx github:YOUR_USERNAME/drawio-swimlane-flowchart --uninstall --project
+npx github:tmiyakawa-tsp/drawio-swimlane-flowchart --uninstall --global
+npx github:tmiyakawa-tsp/drawio-swimlane-flowchart --uninstall --project
 ```
 
 ## Usage

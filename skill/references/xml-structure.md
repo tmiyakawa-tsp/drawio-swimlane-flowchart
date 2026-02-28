@@ -88,22 +88,22 @@ swimlane;startSize=40;html=1;collapsible=1;whiteSpace=wrap;
 ### レーン配色テーブル（デフォルト）
 
 ```xml
-<!-- パターン1: グレー系（顧客・外部向き） -->
+<!-- パターン1: グレー系 -->
 fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;
 
-<!-- パターン2: 緑系（営業・窓口） -->
+<!-- パターン2: 緑系 -->
 fillColor=#d5e8d4;strokeColor=#82b366;
 
-<!-- パターン3: 青系（製造・技術） -->
+<!-- パターン3: 青系 -->
 fillColor=#dae8fc;strokeColor=#6c8ebf;
 
-<!-- パターン4: 黄系（資材・管理）※太字 -->
+<!-- パターン4: 黄系 ※太字 -->
 fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1
 
-<!-- パターン5: 紫系（営業業務・事務） -->
+<!-- パターン5: 紫系 -->
 fillColor=#e1d5e7;strokeColor=#9673a6;
 
-<!-- パターン6: 赤系（仕入先・外部） -->
+<!-- パターン6: 赤系 -->
 fillColor=#f8cecc;strokeColor=#b85450;
 ```
 

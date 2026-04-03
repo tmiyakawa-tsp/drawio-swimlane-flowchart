@@ -447,6 +447,58 @@ exitY/entryY:  0=上端, 0.5=中央, 1=下端
 
 ---
 
+## 7. 迂回パターン（実戦で検証済み）
+
+### パターンE: 左側コリドール
+
+判断ノードのNo側が直下のYes先をスキップして、さらに下のノードに接続する場合。
+直進すると中間ノード（Yes先）を通過してしまうため、レーン左端を通って迂回する。
+
+```xml
+<!-- 判断ノードの左側面から出て、レーン左端を通り、ターゲット上端に入る -->
+<mxCell id="edge_no" value="No"
+    style="edgeStyle=orthogonalEdgeStyle;...exitX=0;exitY=0.5;entryX=0.5;entryY=0;"
+    parent="1" source="dec_xxx" target="dec_yyy" edge="1">
+    <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+            <mxPoint x="[レーンX+30]" y="[判断のグローバルY中央]"/>
+            <mxPoint x="[レーンX+30]" y="[ターゲットのグローバルY-20]"/>
+        </Array>
+    </mxGeometry>
+</mxCell>
+```
+
+**ポイント**: 複数のNo分岐が同じ左コリドールを使う場合、X座標を10pxずつずらす。
+
+### パターンF: 右側コリドール
+
+複数のエッジが遠くのノードに上方から合流する場合。
+中間に他のノードや付箋があるため、レーン右端外側を通って合流先の右側面に入る。
+
+```xml
+<!-- レーン右端外側を通り、ターゲットの右側面に入る -->
+<mxCell id="edge_merge" value="ラベル"
+    style="edgeStyle=orthogonalEdgeStyle;...exitX=1;exitY=0.5;entryX=1;entryY=0.2;"
+    parent="1" source="proc_xxx" target="proc_target" edge="1">
+    <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+            <mxPoint x="[レーンX+レーン幅+10]" y="[ソースのグローバルY中央]"/>
+        </Array>
+    </mxGeometry>
+</mxCell>
+```
+
+**ポイント**: 合流先のentryYを分散させる（0.2, 0.4, 0.6, 0.8）。
+右コリドールのX座標も5pxずつずらす。
+
+### パターンG: 付箋・帳票ノードの退避
+
+付箋（note）や帳票（document）がメインフローの縦線経路上にある場合、
+**ノード自体をレーン内の右寄り（localX=200〜）に移動**する。
+付箋・帳票はフロー上の必須ノードではないため、位置調整が最もシンプル。
+
+---
+
 ## 補足: ID命名規則
 
 | プレフィックス | 用途 | 例 |
